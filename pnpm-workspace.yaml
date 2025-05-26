@@ -1,0 +1,4 @@
+packages:
+  # packages/ 所有項目都會在這個目錄下
+  - 'packages/*'
+
