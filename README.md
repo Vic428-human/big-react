@@ -1,12 +1,6 @@
 # 前言
 
-前端太卷了，在將來，即便不專精後端技術，前端人員還是要有一定的後端 API 規劃能力，
-所以該專案，是我用來熟悉後端 API 規劃的一個項目，但更新頻率不會太高，
-主要還是會把重心放在前端的 side project，所以此專案更新較為隨意。
-
-### monorepos說明
-
-可以方便協同管理不同獨立的庫的生命週期，對於先來說又更高的複雜性。
+可以方便協同管理不同獨立的庫的生命週期，有更高的複雜性。
 在 monorepos 類型的專案中，通常會有多個 JavaScript 代碼庫。
 要使用 Babel 轉譯這些代碼庫，我們需要對 Babel 進行配置
 。不同包的管理工具(npm workspace)，都提供了 workspace 功能。
@@ -33,12 +27,13 @@ packageB 依賴 packageC
 在扁平化依賴管理下， packageC 可能被安裝在根目錄的 node_modules 中，
 而不是嵌套在 packageB 的 node_modules 中
 
+```
 project-root/
 ├── node_modules/
 │   ├── packageA/       # 提升到頂層
 │   ├── packageB/
 │   └── packageC/
-
+```
 
 這樣 packageA 也能夠訪問到 packageC，即使它並沒有在 package.json 中聲明 packageC 為依賴。
 這樣的使用方式是危險的，因為如果將來 packageB 移除或更新了它對 packageC 的依賴， 
