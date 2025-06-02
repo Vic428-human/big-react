@@ -184,3 +184,30 @@ pnpm exec husky init
 ```
 pnpm lint
 ```
+
+#### 對commit規範訊息進行檢查
+
+只要安裝 @commitlint/cli 和 @commitlint/config-conventional 就能正常運作，不需要再安裝 commitlint
+.commitlintrc.js 和 commitlint.config.js 其實都是 commitlint 支援的設定檔案格式，兩者都可以用來設定 commitlint，沒有本質上的差異
+
+```
+pnpm install @commitlint/cli @commitlint/config-conventional --save-dev -w
+```
+
+#### 把 commitlint 集成到husky 中
+
+commit-msg 檔案中可以配置在 git commit 時對 commit 註解的校驗指令可手動創建檔案再輸入檔案內容，但是建議使用命令創建，命令如下:
+
+- npx 是一個 Node.js 工具，用於執行本地或遠端的 npm 包。
+- --no-install 表示不自動安裝缺失的依賴，直接使用當前環境中已安裝的版本。
+- commitlint 是一個用於檢查 Git 提交訊息格式的工具。
+- -e 是 commitlint 的選項，表示從環境變數中讀取提交訊息（通常是 GIT_PARAMS 或 HUSKY_GIT_PARAMS ）。
+- $HUSKY_GIT_PARAMS ：
+  這是 husky 提供的一個環境變數。
+  它指向一個臨時文件，該文件包含了當前提交的提交訊息。
+  在 commit-msg Hook 中，這個文件路徑會被傳遞給相關工具（例如 commitlint），以便讀取和檢查提交訊息。
+- 棄用原因 ：Husky 7.x 引入了新的配置方式，不再使用 husky add 命令來添加 Git hooks。
+
+```
+npx husky add .husky/commit-msg "npx --no-install commitlint -e $HUSKY_GIT_PARAMS"
+```
