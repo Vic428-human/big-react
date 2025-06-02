@@ -179,7 +179,7 @@ pnpm exec husky init
 
 #### 想讓它在 commit 前執行 pnpm lint
 
-.husky\pre-commit 直接在路徑中覆script命令，之後每次執行 git commit 前，Husky 就會自動執行 pnpm lint，效果等同 id .husky/pre-commit "pnpm lint"
+.husky\pre-commit 直接在路徑中覆script命令，之後每次執行 git commit 前，Husky 就會自動執行 pnpm lint，效果等同 id .husky/pre-commit "pnpm lint"，這樣確保了每次commit前都是在規範下才上傳至codebase。做到了即時檢查的效果。
 
 ```
 pnpm lint
