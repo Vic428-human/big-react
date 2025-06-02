@@ -191,7 +191,7 @@ pnpm lint
 .commitlintrc.js 和 commitlint.config.js 其實都是 commitlint 支援的設定檔案格式，兩者都可以用來設定 commitlint，沒有本質上的差異
 
 ```
-pnpm install @commitlint/cli @commitlint/config-conventional --save-dev -w
+pnpm install commitlint @commitlint/cli @commitlint/config-conventional --save-dev -w
 ```
 
 #### 把 commitlint 集成到husky 中
