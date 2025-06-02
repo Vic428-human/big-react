@@ -164,3 +164,23 @@ pnpm i eslint-config-prettier eslint-plugin-prettier -d -w
 #### 錯誤訊息查詢
 
 - [C-1]ERR_PNPM_SPEC_NOT_SUPPORTED_BY_ANY_RESOLVER  @typescript-eslint/eslint-plugin@latest, isn't supported by any available resolver.
+
+#### 安装 husky
+
+```
+pnpm add --save-dev husky
+```
+
+#### 初始化 Husky
+
+```
+pnpm exec husky init
+```
+
+#### 想讓它在 commit 前執行 pnpm lint
+
+.husky\pre-commit 直接在路徑中覆script命令，之後每次執行 git commit 前，Husky 就會自動執行 pnpm lint，效果等同 id .husky/pre-commit "pnpm lint"
+
+```
+pnpm lint
+```
